@@ -34,7 +34,6 @@ public class Runner {
 		{
 			int a = (int) (Math.random() * building.length);
 			int b = (int) (Math.random() * building.length);
-			dingowde
 			j--;
 		}
 
