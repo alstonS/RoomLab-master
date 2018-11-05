@@ -1,13 +1,14 @@
 package Rooms;
 
 import People.Person;
+import Game.Runner;
 
-public class candyItem {
-    Person occupant;
-    int xLoc,yLoc;
+public class CandyItem extends Room{
 
-    public Room(int x, int y)
+
+    public CandyItem(int x, int y)
     {
+        super(x,y);
         xLoc = x;
         yLoc = y;
     }

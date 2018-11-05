@@ -4,6 +4,7 @@ import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
 import Rooms.emptyRoom;
+import Rooms.CandyItem;
 
 import java.util.Scanner;
 
@@ -26,16 +27,38 @@ public class Runner {
 		}
 		
 		//Create a random winning room.
-		int j = (int)(Math.random()*10);
+		String[] roomList = {"emptyRoom", "scaryRoom" + " unknownRoom" };
+		String[] itemCollectRooms = { "CandyItem" + "pumpkinItem" + "skullItem" + "swordItem" + "lockItem"};
+		int[][] usedRooms = new int[9][1];
+		int j = (int)(Math.random()* roomList.length);
+		int k = (int)(Math.random()* itemCollectRooms.length);
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
+		int o = 0;
 		building[x][y] = new WinningRoom(x, y);
-		while (int j >= 0)
+		while ( j >= 0)
 		{
-			int a = (int) (Math.random() * building.length);
-			int b = (int) (Math.random() * building.length);
-			j--;
+
+			 x = (int) (Math.random() * building.length);
+			 y = (int) (Math.random() * building.length);
+			 building[x][y] = new roomList[o](x,y);
+			 j--;
+			 o++;
 		}
+
+		x = (int) (Math.random() * building.length);
+		y = (int) (Math.random() * building.length);
+		for(int u =0 ; u < usedRooms.length; u++)
+		{
+			if(usedRooms[u][0]  == )
+		}
+		building[x][y] = new CandyItem(x,y);
+		usedRooms[o][0] = usedRooms[x][y];
+
+
+
+
+
 
 
 	//Setup player 1 and the input scanner

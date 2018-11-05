@@ -30,6 +30,7 @@ public class emptyRoom {
      * Removes the player from the room.
      * @param x
      */
+
     public void leaveRoom(Person x)
     {
         occupant = null;
