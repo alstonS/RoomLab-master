@@ -27,7 +27,9 @@ public class Runner {
 		}
 		
 		//Create a random winning room.
-		String[] roomList = {"emptyRoom", "scaryRoom" + " unknownRoom" };
+
+
+		Room[] roomList = {"emptyRoom", "scaryRoom", " unknownRoom", "wallRoom"};
 		String[] itemCollectRooms = { "CandyItem" + "pumpkinItem" + "skullItem" + "swordItem" + "lockItem"};
 		int[][] usedRooms = new int[9][1];
 		int j = (int)(Math.random()* roomList.length);
@@ -35,25 +37,38 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		int o = 0;
+		Room emptyRoom = new emptyRoom(x,y);
+
 		building[x][y] = new WinningRoom(x, y);
 		while ( j >= 0)
 		{
 
 			 x = (int) (Math.random() * building.length);
 			 y = (int) (Math.random() * building.length);
-			 building[x][y] = new roomList[o](x,y);
+
+
 			 j--;
 			 o++;
 		}
 
 		x = (int) (Math.random() * building.length);
 		y = (int) (Math.random() * building.length);
-		for(int u =0 ; u < usedRooms.length; u++)
-		{
-			if(usedRooms[u][0]  == )
-		}
+
+
+
 		building[x][y] = new CandyItem(x,y);
 		usedRooms[o][0] = usedRooms[x][y];
+		
+		x = (int) (Math.random() * building.length);
+		y = (int) (Math.random() * building.length);
+		building[x][y] = new emptyRoom(x, y);
+		usedRooms[o][0] = x;
+		usedRooms[o][1] = y;
+
+
+
+
+
 
 
 

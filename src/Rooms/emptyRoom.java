@@ -2,16 +2,14 @@ package Rooms;
 import Game.Runner;
 import People.Person;
 
-public class emptyRoom {
+public class emptyRoom extends Room{
 
 
-    Person occupant;
-    int xLoc,yLoc;
 
-    public Room(int x, int y)
+    public emptyRoom(int x, int y)
     {
-        xLoc = x;
-        yLoc = y;
+        super(x,y);
+
     }
 
     /**
