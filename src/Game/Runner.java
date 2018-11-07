@@ -1,4 +1,4 @@
-package Game;
+package Game;x
 
 import People.Person;
 import Rooms.Room;
@@ -13,57 +13,87 @@ public class Runner {
 
 	private static boolean gameOn = true;
 	
+	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
+		System.out.println("Welcome. You wake up in a unfamiliar place. You realize that you are in a haunted and spooky house. You must find a way out of here without getting killed by the ghost behind you!");
+		System.out.println("The goal is to find all 5 items and reach the final/winning door");
+		Scanner input = new Scanner(System.in);
+
+		System.out.println("You may select the difficulty of this adventure. Type in 'easy/medium/hard' to select your desired difficulty.");
+		int difficulty;
+		while(true)
+		{
+			if(input.nextLine().toLowerCase().trim().equals("easy"))
+			{
+				difficulty = 1;
+				break;
+			}
+			else if(input.nextLine().toLowerCase().trim().equals("medium"))
+			{
+				difficulty = 2;
+				break;
+			}
+			else if(input.nextLine().toLowerCase().trim().equals("hard"))
+			{
+				difficulty = 3;
+				break;
+			}
+			else
+			{
+				System.out.println("Enter a a difficulty(easy, medium, hard");
+			}
+		}
+		Room[][] building = new Room[4*difficulty][4*difficulty];
 		
 		//Fill the building with normal rooms
+
+		int o = 0;
+		int[][] usedRooms = new int[99][1];
+		//Create a random winning room.
+		
+		int x = (int)(Math.random()*building.length);
+		int y = (int)(Math.random()*building.length);
+		while(building[x][y] != null)
+		{
+			x = (int)(Math.random()*building.length);
+			y = (int)(Math.random()*building.length);
+			building[x][y] = new WinningRoom(x,y);
+		}
+
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+
+		while(building[x][y] !=  null)
+		{
+			x = (int)(Math.random()*building.length);
+			y = (int)(Math.random()*building.length);
+			building[x][y] = new emptyRoom(x,y);
+		}
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		while (building[x][y] != null)
+		{
+			x = (int)(Math.random()*building.length);
+			y = (int)(Math.random()*building.length);
+			building[x][y] = new CandyItem(x,y);
+		}
+
 		for (int x = 0; x<building.length; x++)
 		{
 			for (int y = 0; y < building[x].length; y++)
 			{
+				if(building[x][y] == null)
 				building[x][y] = new Room(x,y);
+
 			}
 		}
+
+
+
 		
-		//Create a random winning room.
-
-
-		Room[] roomList = {"emptyRoom", "scaryRoom", " unknownRoom", "wallRoom"};
-		String[] itemCollectRooms = { "CandyItem" + "pumpkinItem" + "skullItem" + "swordItem" + "lockItem"};
-		int[][] usedRooms = new int[9][1];
-		int j = (int)(Math.random()* roomList.length);
-		int k = (int)(Math.random()* itemCollectRooms.length);
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
-		int o = 0;
-		Room emptyRoom = new emptyRoom(x,y);
-
-		building[x][y] = new WinningRoom(x, y);
-		while ( j >= 0)
-		{
-
-			 x = (int) (Math.random() * building.length);
-			 y = (int) (Math.random() * building.length);
-
-
-			 j--;
-			 o++;
-		}
-
-		x = (int) (Math.random() * building.length);
-		y = (int) (Math.random() * building.length);
-
-
-
-		building[x][y] = new CandyItem(x,y);
-		usedRooms[o][0] = usedRooms[x][y];
 		
-		x = (int) (Math.random() * building.length);
-		y = (int) (Math.random() * building.length);
-		building[x][y] = new emptyRoom(x, y);
-		usedRooms[o][0] = x;
-		usedRooms[o][1] = y;
+
 
 
 
