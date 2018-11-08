@@ -1,10 +1,8 @@
-package Game;x
+package Game;
 
 import People.Person;
-import Rooms.Room;
-import Rooms.WinningRoom;
-import Rooms.emptyRoom;
-import Rooms.CandyItem;
+import Rooms.*;
+
 
 import java.util.Scanner;
 
@@ -12,7 +10,6 @@ public class Runner {
 	
 
 	private static boolean gameOn = true;
-	
 	
 	public static void main(String[] args)
 	{
@@ -45,12 +42,7 @@ public class Runner {
 			}
 		}
 		Room[][] building = new Room[4*difficulty][4*difficulty];
-		
-		//Fill the building with normal rooms
 
-		int o = 0;
-		int[][] usedRooms = new int[99][1];
-		//Create a random winning room.
 		
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
@@ -58,30 +50,63 @@ public class Runner {
 		{
 			x = (int)(Math.random()*building.length);
 			y = (int)(Math.random()*building.length);
-			building[x][y] = new WinningRoom(x,y);
+			building[x][y] = new WinningRoom(x,y); //will show up as a room but it is hidden and you must find it. Having all 5 items
 		}
 
 		x = (int)(Math.random()*building.length);
 		y = (int)(Math.random()*building.length);
-
-		while(building[x][y] !=  null)
+		int e = (int)(Math.random()*difficulty*2);
+		while(building[x][y] !=  null && e>0)
 		{
 			x = (int)(Math.random()*building.length);
 			y = (int)(Math.random()*building.length);
-			building[x][y] = new emptyRoom(x,y);
+			building[x][y] = new emptyRoom(x,y); //emptyRoom is shown as a room, but has nothing in it.
+		}
+
+
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		while (building[x][y] != null) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new lockItem(x,y);
 		}
 		x = (int)(Math.random()*building.length);
 		y = (int)(Math.random()*building.length);
-		while (building[x][y] != null)
-		{
-			x = (int)(Math.random()*building.length);
-			y = (int)(Math.random()*building.length);
-			building[x][y] = new CandyItem(x,y);
+		while (building[x][y] != null) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new skullItem(x,y);
 		}
 
-		for (int x = 0; x<building.length; x++)
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		while (building[x][y] != null) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new pumpkinItem(x,y);
+		}
+
+
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		while (building[x][y] != null) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new swordItem(x,y);
+		}
+
+
+
+
+
+		for(x=0; x< )
+
+
+		//Fill the building with normal rooms
+		for (x = 0; x<building.length; x++)
 		{
-			for (int y = 0; y < building[x].length; y++)
+			for (y = 0; y < building[x].length; y++)
 			{
 				if(building[x][y] == null)
 				building[x][y] = new Room(x,y);
@@ -107,7 +132,7 @@ public class Runner {
 
 
 	//Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		Person player1 = new Person("FirstName", 0, 0,0);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)

@@ -1,12 +1,13 @@
 package People;
 
+import Game.Runner;
+
 /**
  * Person represents the player as they move through the game.
  */
 public class Person {
 	String firstName;
-	String familyName;
-	int xLoc, yLoc;
+	int xLoc, yLoc, hp;
 
 
 	public int getxLoc() {
@@ -24,14 +25,25 @@ public class Person {
 	public void setyLoc(int yLoc) {
 		this.yLoc = yLoc;
 	}
+	public void setHitP(int hp)
+	{
+		this.hp = hp;
+		if(hp <= 0 )
+		{
+			Runner.gameOff();
+		}
+	}
 
-	public Person (String firstName, String familyName, int xLoc, int yLoc)
+	public Person (String firstName, int xLoc, int yLoc, int hp)
 	{
 		this.firstName = firstName;
-		this.familyName = familyName;
+
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+		this.hp = hp;
 	}
+
+
 
 
 }

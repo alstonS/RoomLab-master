@@ -18,7 +18,7 @@ public class emptyRoom extends Room{
      */
     public void enterRoom(Person x)
     {
-        System.out.println("You enter a plain old room");
+        System.out.println("Haha, you entered a room with nothing in it! You have wasted time here.");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
