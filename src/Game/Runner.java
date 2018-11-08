@@ -42,65 +42,90 @@ public class Runner {
 			}
 		}
 		Room[][] building = new Room[4*difficulty][4*difficulty];
+		int e = (int)(Math.random()*difficulty*2);
 
-		
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		while(building[x][y] != null)
+
+
+
+
+		for(int a=0; a < 1; a++) //This is a room with the lock item for final door.(player will go into the room and have the item in his or her inventory).
 		{
-			x = (int)(Math.random()*building.length);
-			y = (int)(Math.random()*building.length);
-			building[x][y] = new WinningRoom(x,y); //will show up as a room but it is hidden and you must find it. Having all 5 items
-		}
+			while(building[x][y] != null)
+			{
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
 
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		int e = (int)(Math.random()*difficulty*2);
-		while(building[x][y] !=  null && e>0)
+			if(building[x][y] == null) {
+				building[x][y] = new lockItem(x, y);
+			}
+
+		}
+		for(int a=0; a < 1; a++) //This is a room with the pumpkin item for final door.(player will go into the room and have the item in his or her inventory).
 		{
-			x = (int)(Math.random()*building.length);
-			y = (int)(Math.random()*building.length);
-			building[x][y] = new emptyRoom(x,y); //emptyRoom is shown as a room, but has nothing in it.
+			while(building[x][y] != null)
+			{
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
+
+			if(building[x][y] == null) {
+				building[x][y] = new pumpkinItem(x, y);
+			}
+
+		}
+		for(int a=0; a < 1; a++) //This is a room with the sword item for final door. (player will go into the room and have the item in his or her inventory).
+		{
+			while(building[x][y] != null)
+			{
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
+
+			if(building[x][y] == null) {
+				building[x][y] = new swordItem(x, y);
+			}
+
+		}
+		for(int a=0; a < 1; a++) //This is a room with the skull item for final door.(player will go into the room and have the item in his or her inventory).
+		{
+			while(building[x][y] != null)
+			{
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
+
+			if(building[x][y] == null) {
+				building[x][y] = new skullItem(x, y);
+			}
+
 		}
 
+		for(int a=0; a < e; a++) //Fills the building with empty rooms depending on difficulty.
+		{
+			while(building[x][y] != null)
+			{
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
 
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		while (building[x][y] != null) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new lockItem(x,y);
+			if(building[x][y] == null) {
+				building[x][y] = new emptyRoom(x, y);
+			}
+
 		}
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		while (building[x][y] != null) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new skullItem(x,y);
+		for(int a = 0; a < e + 1; a++) //Fills the building with scary rooms depending on difficulty.
+		{
+			while (building[x][y] != null) {
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
+			if (building[x][y] == null) {
+				building[x][y] = new scaryRoom(x, y);
+			}
 		}
-
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		while (building[x][y] != null) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new pumpkinItem(x,y);
-		}
-
-
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		while (building[x][y] != null) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new swordItem(x,y);
-		}
-
-
-
-
-
-		for(x=0; x< )
 
 
 		//Fill the building with normal rooms
@@ -116,28 +141,19 @@ public class Runner {
 
 
 
-		
-		
 
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 	//Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", 0, 0,0);
+		String[] Inventory = new String[4];
+		Person player1 = new Person("FirstName", 0, 0,0, "");
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move? (Choose W, A, S, D)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -164,7 +180,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -175,7 +191,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -199,7 +215,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);

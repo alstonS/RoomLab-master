@@ -6,7 +6,7 @@ import Game.Runner;
  * Person represents the player as they move through the game.
  */
 public class Person {
-	String firstName;
+	String firstName, Inventory;
 	int xLoc, yLoc, hp;
 
 
@@ -33,13 +33,24 @@ public class Person {
 			Runner.gameOff();
 		}
 	}
+	public int getHitP()
+	{
+		return hp;
+	}
+	public void setInventory(String Inventory)
+	{
+		this.Inventory = Inventory;
+	}
 
-	public Person (String firstName, int xLoc, int yLoc, int hp)
+
+
+	public Person (String firstName, int xLoc, int yLoc, int hp, String Inventory)
 	{
 		this.firstName = firstName;
 
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+		this.Inventory = Inventory;
 		this.hp = hp;
 	}
 
