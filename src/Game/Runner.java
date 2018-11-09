@@ -10,6 +10,7 @@ public class Runner {
 	
 
 	private static boolean gameOn = true;
+	public static Person x;
 	
 	public static void main(String[] args)
 	{
@@ -47,7 +48,7 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 
-
+		building[0][0] = new StartingRoom(x,y,null,50);
 
 
 		for(int a=0; a < 1; a++) //This is a room with the lock item for final door.(player will go into the room and have the item in his or her inventory).
@@ -59,7 +60,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new lockItem(x, y);
+				building[x][y] = new lockItem(x, y, "Lock", 15);
 			}
 
 		}
@@ -72,7 +73,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new pumpkinItem(x, y);
+				building[x][y] = new pumpkinItem(x, y, "Pumpkin", 15);
 			}
 
 		}
@@ -85,7 +86,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new swordItem(x, y);
+				building[x][y] = new swordItem(x, y,"Sword", 15);
 			}
 
 		}
@@ -98,12 +99,12 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new skullItem(x, y);
+				building[x][y] = new skullItem(x, y, "Skull", 15);
 			}
 
 		}
 
-		for(int a=0; a < e; a++) //Fills the building with empty rooms depending on difficulty.
+		for(int a=0; a < e + 1; a++) //Fills the building with empty rooms depending on difficulty.
 		{
 			while(building[x][y] != null)
 			{
@@ -112,18 +113,29 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new emptyRoom(x, y);
+				building[x][y] = new emptyRoom(x, y, null, 15);
 			}
 
 		}
-		for(int a = 0; a < e + 1; a++) //Fills the building with scary rooms depending on difficulty.
+		for(int a = 0; a < e * 2; a++) //Fills the building with scary rooms depending on difficulty.
+		{
+			while (building[x][y] != null) {
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+			}
+
+			if (building[x][y] == null) {
+				building[x][y] = new scaryRoom(x, y, null,55);
+			}
+		}
+		for(int a = 0; a < 1 ; a++) //One Winning room.
 		{
 			while (building[x][y] != null) {
 				x = (int) (Math.random() * building.length);
 				y = (int) (Math.random() * building.length);
 			}
 			if (building[x][y] == null) {
-				building[x][y] = new scaryRoom(x, y);
+				building[x][y] = new WinningRoom(x, y, null, 15);
 			}
 		}
 
@@ -134,7 +146,7 @@ public class Runner {
 			for (y = 0; y < building[x].length; y++)
 			{
 				if(building[x][y] == null)
-				building[x][y] = new Room(x,y);
+				building[x][y] = new Room(x,y,null, 0);
 
 			}
 		}
@@ -161,7 +173,7 @@ public class Runner {
 				
 			}
 			else {
-				System.out.println("Please choose a valid move.");
+				System.out.println("You have reached the limits of the map. Please choose a valid move.");
 			}
 			
 			

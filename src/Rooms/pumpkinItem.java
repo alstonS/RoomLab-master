@@ -3,9 +3,9 @@ package Rooms;
 import People.Person;
 
 public class pumpkinItem extends Room{
-    public pumpkinItem(int x, int y)
+    public pumpkinItem(int x, int y, String Inventory, int totalHP)
     {
-        super(x,y);
+        super(x,y, Inventory, totalHP);
 
     }
 

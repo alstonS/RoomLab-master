@@ -3,9 +3,9 @@ package Rooms;
 import People.Person;
 
 public class swordItem extends Room{
-    public swordItem(int x, int y)
+    public swordItem(int x, int y, String Inventory, int totalHP)
     {
-        super(x,y);
+        super(x,y, Inventory,totalHP );
 
     }
 
@@ -19,6 +19,7 @@ public class swordItem extends Room{
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
+        x.setInventory(this.Inventory);
 
     }
 

@@ -7,7 +7,7 @@ import Game.Runner;
  */
 public class Person {
 	String firstName, Inventory;
-	int xLoc, yLoc, hp;
+	int xLoc, yLoc, hp, totalHP;
 
 
 	public int getxLoc() {
@@ -41,6 +41,9 @@ public class Person {
 	{
 		this.Inventory = Inventory;
 	}
+	public void setTotalHP(int totalHP){this.totalHP = totalHP;}
+	public int getTOTALHP(){return totalHP;}
+
 
 
 

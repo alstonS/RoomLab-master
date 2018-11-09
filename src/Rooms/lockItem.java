@@ -3,9 +3,9 @@ package Rooms;
 import People.Person;
 
 public class lockItem extends Room{
-    public lockItem(int x, int y)
+    public lockItem(int x, int y, String Inventory, int totalHP)
     {
-        super(x,y);
+        super(x,y, Inventory, totalHP);
 
     }
 

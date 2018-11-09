@@ -4,13 +4,18 @@ import People.Person;
 
 public class Room {
 	Person occupant;
-	int xLoc,yLoc;
+	int xLoc,yLoc,totalHP;
+	String Inventory;
 	
-	public Room(int x, int y)
+	public Room(int x, int y, String Item, int HP)
 	{
 		xLoc = x;
 		yLoc = y;
+		Inventory = Item;
+		totalHP = HP;
 	}
+
+
 
 	/**
 	 * Method controls the results when a person enters this room.

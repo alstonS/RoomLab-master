@@ -3,8 +3,8 @@ package Rooms;
 import People.Person;
 
 
-public class skullItem extends Room {
-    public skullItem(int x, int y, String Inventory, int totalHP)
+public class StartingRoom extends Room {
+    public StartingRoom(int x, int y, String Inventory, int totalHP)
     {
         super(x,y, Inventory, totalHP);
 
@@ -16,7 +16,7 @@ public class skullItem extends Room {
      */
     public void enterRoom(Person x)
     {
-        System.out.println("Congrats you have found the Skull item(one of the 4 items needed to win the game).");
+        System.out.println("This is where you wake up.");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);

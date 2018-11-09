@@ -6,9 +6,9 @@ import People.Person;
 
 
 public class scaryRoom extends Room{
-    public scaryRoom(int x, int y)
+    public scaryRoom(int x, int y, String Inventory, int totalHP)
     {
-        super(x,y);
+        super(x,y, Inventory, totalHP);
 
     }
 
@@ -18,7 +18,11 @@ public class scaryRoom extends Room{
      */
     public void enterRoom(Person x)
     {
+
+
         System.out.println("BOO! Unlucky you. You just stepped into a haunted room. You just lost 20 Health.");
+        x.setHitP(x.getHitP()-20);
+
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
