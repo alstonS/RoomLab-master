@@ -42,13 +42,13 @@ public class Runner {
 				System.out.println("Enter a a difficulty(easy, medium, hard");
 			}
 		}
-		Room[][] building = new Room[4*difficulty][4*difficulty];
+		Room[][] building = new Room[5*difficulty][5*difficulty];
 		int e = (int)(Math.random()*difficulty*2);
 
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 
-		building[0][0] = new StartingRoom(x,y,null,50);
+		building[0][0] = new StartingRoom(x,y);
 
 
 		for(int a=0; a < 1; a++) //This is a room with the lock item for final door.(player will go into the room and have the item in his or her inventory).
@@ -60,7 +60,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new lockItem(x, y, "Lock", 15);
+				building[x][y] = new lockItem(x, y);
 			}
 
 		}
@@ -73,7 +73,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new pumpkinItem(x, y, "Pumpkin", 15);
+				building[x][y] = new pumpkinItem(x, y);
 			}
 
 		}
@@ -86,7 +86,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new swordItem(x, y,"Sword", 15);
+				building[x][y] = new swordItem(x, y);
 			}
 
 		}
@@ -99,7 +99,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new skullItem(x, y, "Skull", 15);
+				building[x][y] = new skullItem(x, y);
 			}
 
 		}
@@ -113,7 +113,7 @@ public class Runner {
 			}
 
 			if(building[x][y] == null) {
-				building[x][y] = new emptyRoom(x, y, null, 15);
+				building[x][y] = new emptyRoom(x, y);
 			}
 
 		}
@@ -125,7 +125,7 @@ public class Runner {
 			}
 
 			if (building[x][y] == null) {
-				building[x][y] = new scaryRoom(x, y, null,55);
+				building[x][y] = new scaryRoom(x, y);
 			}
 		}
 		for(int a = 0; a < 1 ; a++) //One Winning room.
@@ -135,7 +135,7 @@ public class Runner {
 				y = (int) (Math.random() * building.length);
 			}
 			if (building[x][y] == null) {
-				building[x][y] = new WinningRoom(x, y, null, 15);
+				building[x][y] = new WinningRoom(x, y);
 			}
 		}
 
@@ -146,7 +146,7 @@ public class Runner {
 			for (y = 0; y < building[x].length; y++)
 			{
 				if(building[x][y] == null)
-				building[x][y] = new Room(x,y,null, 0);
+				building[x][y] = new Room(x,y);
 
 			}
 		}
@@ -160,17 +160,17 @@ public class Runner {
 
 	//Setup player 1 and the input scanner
 		String[] Inventory = new String[4];
-		Person player1 = new Person("FirstName", 0, 0,0, "");
+		Person player1 = new Person("FirstName", 0, 0,100);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose W, A, S, D)");
+			System.out.println("Where would you like to move? (Choose W, A, S, D, item [1-4], use [1-4]");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-				
+				System.out.println("Your current health is " + player1.getHitP() +".");
 			}
 			else {
 				System.out.println("You have reached the limits of the map. Please choose a valid move.");
@@ -193,51 +193,140 @@ public class Runner {
 		move = move.toLowerCase().trim();
 		switch (move) {
 			case "w":
-				if (p.getxLoc() > 0)
-				{
+				if (p.getxLoc() > 0) {
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()-1][p.getyLoc()].enterRoom(p);
+					map[p.getxLoc() - 1][p.getyLoc()].enterRoom(p);
 					return true;
-				}
-				else
-				{
+				} else {
 					return false;
 				}
 			case "d":
-				if (p.getyLoc()< map[p.getyLoc()].length -1)
-				{
+				if (p.getyLoc() < map[p.getyLoc()].length - 1) {
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
 					map[p.getxLoc()][p.getyLoc() + 1].enterRoom(p);
 					return true;
-				}
-				else
-				{
+				} else {
 					return false;
 				}
 
 			case "s":
-				if (p.getxLoc() < map.length - 1)
-				{
+				if (p.getxLoc() < map.length - 1) {
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()+1][p.getyLoc()].enterRoom(p);
+					map[p.getxLoc() + 1][p.getyLoc()].enterRoom(p);
 					return true;
-				}
-				else
-				{
+				} else {
 					return false;
 				}
 
 			case "a":
-				if (p.getyLoc() > 0)
-				{
+				if (p.getyLoc() > 0) {
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()][p.getyLoc()-1].enterRoom(p);
+					map[p.getxLoc()][p.getyLoc() - 1].enterRoom(p);
 					return true;
 				}
+			case "item 1": {
+				if (p.Inventory2[0] == null)
+					System.out.println("Select an item that you have");
+				else {
+					System.out.println("You have activated " + p.Inventory2[0] + " and added to the final key!");
+					p.use(0);
+				}
+				return true;
+			}
+			case "item 2": {
+				if (p.Inventory2[1] == null)
+					System.out.println("Select an item that you have");
+				else {
+					System.out.println("You have activated " + p.Inventory2[1] + " and added to the final key!");
+					p.use(1);
+				}
+				return true;
+			}
+			case "item 3": {
+				if (p.Inventory2[2] == null)
+					System.out.println("Select an item that you have");
+				else {
+					System.out.println("You have activated " + p.Inventory2[2] + " and added to the final key!");
+					p.use(2);
+				}
+				return true;
+			}
+			case "item 4": {
+				if (p.Inventory2[3] == null)
+					System.out.println("Select an item that you have");
+				else {
+					System.out.println("You have activated " + p.Inventory2[3] + " and added to the final key!");
+					p.use(3);
+				}
+				return true;
+			}
+			case "consume 1":
+			{
+				if(p.Inventory[0]==null)
+					System.out.println("Select an consumable that you have");
 				else
 				{
-					return false;
+					System.out.println("You ate " + p.Inventory[0]+ " and gained 10 health!");
+					p.consume(0);
 				}
+
+			}
+			case "consume 2":
+			{
+				if(p.Inventory[1]==null)
+					System.out.println("Select an consumable that you have");
+				else
+				{
+					System.out.println("You ate " + p.Inventory[1]+ " and gained 10 health!");
+					p.consume(1);
+				}
+
+			}
+			case "consume 3":
+			{
+				if(p.Inventory[2]==null)
+					System.out.println("Select an consumable that you have");
+				else
+				{
+					System.out.println("You ate " + p.Inventory[2]+ " and gained 10 health!");
+					p.consume(2);
+				}
+
+
+			}
+			case "consume 4":
+			{
+				if(p.Inventory[3]==null)
+					System.out.println("Select an consumable that you have");
+				else
+				{
+					System.out.println("You ate " + p.Inventory[3]+ " and gained 10 health!");
+					p.consume(3);
+				}
+
+			}
+			case "consume 5":
+			{
+				if(p.Inventory[4]==null)
+					System.out.println("Select an consumable that you have");
+				else
+				{
+					System.out.println("You ate " + p.Inventory[4]+ " and gained 10 health!");
+					p.consume(4);
+				}
+
+			}
+			case "consume 6":
+			{
+				if(p.Inventory[5]==null)
+					System.out.println("Select an consumable that you have");
+				else
+				{
+					System.out.println("You ate " + p.Inventory[5]+ " and gained 10 health!");
+					p.consume(5);
+				}
+
+			}
 			default:
 				break;
 					

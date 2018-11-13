@@ -4,15 +4,14 @@ import People.Person;
 
 public class Room {
 	Person occupant;
-	int xLoc,yLoc,totalHP;
+	int xLoc,yLoc;
 	String Inventory;
 	
-	public Room(int x, int y, String Item, int HP)
+	public Room(int x, int y)
 	{
 		xLoc = x;
 		yLoc = y;
-		Inventory = Item;
-		totalHP = HP;
+
 	}
 
 

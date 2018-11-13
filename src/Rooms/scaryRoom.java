@@ -6,9 +6,9 @@ import People.Person;
 
 
 public class scaryRoom extends Room{
-    public scaryRoom(int x, int y, String Inventory, int totalHP)
+    public scaryRoom(int x, int y)
     {
-        super(x,y, Inventory, totalHP);
+        super(x,y);
 
     }
 

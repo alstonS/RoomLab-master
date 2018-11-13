@@ -1,14 +1,15 @@
 package Rooms;
 import Game.Runner;
+import Items.CandyCorn;
 import People.Person;
 
 public class emptyRoom extends Room{
 
 
 
-    public emptyRoom(int x, int y, String Inventory, int totalHP)
+    public emptyRoom(int x, int y)
     {
-        super(x,y, Inventory, totalHP);
+        super(x,y);
 
     }
 
@@ -19,8 +20,8 @@ public class emptyRoom extends Room{
     public void enterRoom(Person x)
     {
         if(Math.random()>.5) {
-            System.out.println("Haha, you entered a room with nothing in it! You have wasted time here. You do find yourself an apple and you gain 10 health.");
-            x.setHitP(x.getHitP()+10);
+            System.out.println("Haha, you entered a room with nothing in it! You have wasted time here. You do find yourself candy corn and you can consume it for 10 health.");
+            x.addConsume(new CandyCorn());
         }
         else
         {

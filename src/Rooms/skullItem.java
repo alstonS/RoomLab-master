@@ -1,12 +1,13 @@
 package Rooms;
 
+import Items.Skull;
 import People.Person;
 
 
 public class skullItem extends Room {
-    public skullItem(int x, int y, String Inventory, int totalHP)
+    public skullItem(int x, int y)
     {
-        super(x,y, Inventory, totalHP);
+        super(x,y);
 
     }
 
@@ -16,6 +17,7 @@ public class skullItem extends Room {
      */
     public void enterRoom(Person x)
     {
+        x.addItem(new Skull());
         System.out.println("Congrats you have found the Skull item(one of the 4 items needed to win the game).");
         occupant = x;
         x.setxLoc(this.xLoc);

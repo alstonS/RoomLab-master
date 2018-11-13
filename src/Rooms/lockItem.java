@@ -1,11 +1,12 @@
 package Rooms;
 
+import Items.Lock;
 import People.Person;
 
 public class lockItem extends Room{
-    public lockItem(int x, int y, String Inventory, int totalHP)
+    public lockItem(int x, int y)
     {
-        super(x,y, Inventory, totalHP);
+        super(x,y);
 
     }
 
@@ -15,6 +16,7 @@ public class lockItem extends Room{
      */
     public void enterRoom(Person x)
     {
+        x.addItem(new Lock());
         System.out.println("Congrats you have found the lock (one of the 4 items needed to win the game).");
         occupant = x;
         x.setxLoc(this.xLoc);
