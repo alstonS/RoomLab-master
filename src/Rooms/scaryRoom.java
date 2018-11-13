@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package Rooms;
 
 import People.Person;
@@ -38,6 +39,17 @@ public class scaryRoom extends Room{
     public void leaveRoom(Person x)
     {
         occupant = null;
+    }
+    @Override
+    public String toString()
+    {
+        if(occupant ==null){
+            return ("SR");
+
+        }
+        else
+            return("P");
+
     }
 
 }

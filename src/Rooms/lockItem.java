@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package Rooms;
 
 import Items.Lock;
@@ -32,6 +33,17 @@ public class lockItem extends Room{
     public void leaveRoom(Person x)
     {
         occupant = null;
+    }
+    @Override
+    public String toString()
+    {
+        if(occupant ==null){
+            return ("LT");
+
+        }
+        else
+            return("P");
+
     }
 
 }

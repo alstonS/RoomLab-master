@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package People;
 
 import Game.Runner;
@@ -24,6 +25,10 @@ public class Person {
 
 	public int getyLoc() {
 		return yLoc;
+	}
+	public int getLengthInventory2()
+	{
+		return Inventory2.length;
 	}
 
 	public void setyLoc(int yLoc) {

@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package Rooms;
 import Game.Runner;
 import Items.CandyCorn;
@@ -25,8 +26,8 @@ public class emptyRoom extends Room{
         }
         else
         {
-            System.out.println("You entered an empty room, but the lights were off and you tripped yourself. You lose 5 health");
-            x.setHitP(x.getHitP()-5);
+            System.out.println("You entered an empty room, but the lights were off and you tripped yourself. You lose 15 health");
+            x.setHitP(x.getHitP()-15);
         }
         occupant = x;
         x.setxLoc(this.xLoc);
@@ -41,6 +42,17 @@ public class emptyRoom extends Room{
     public void leaveRoom(Person x)
     {
         occupant = null;
+    }
+    @Override
+    public String toString()
+    {
+        if(occupant ==null){
+            return ("EM");
+
+        }
+        else
+            return("P");
+
     }
 
 }

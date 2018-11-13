@@ -1,7 +1,9 @@
+//Alston Shi Period 2/3
 package Game;
 
 import People.Person;
 import Rooms.*;
+import Rooms.Board;
 
 
 import java.util.Scanner;
@@ -16,10 +18,9 @@ public class Runner {
 	{
 		System.out.println("Welcome. You wake up in a unfamiliar place. You realize that you are in a haunted and spooky house. You must find a way out of here without getting killed by the ghost behind you!");
 		System.out.println("The goal is to find all 5 items and reach the final/winning door");
-		Scanner input = new Scanner(System.in);
-
 		System.out.println("You may select the difficulty of this adventure. Type in 'easy/medium/hard' to select your desired difficulty.");
-		int difficulty;
+		Scanner input = new Scanner(System.in);
+		double difficulty;
 		while(true)
 		{
 			if(input.nextLine().toLowerCase().trim().equals("easy"))
@@ -29,12 +30,12 @@ public class Runner {
 			}
 			else if(input.nextLine().toLowerCase().trim().equals("medium"))
 			{
-				difficulty = 2;
+				difficulty = 1.5;
 				break;
 			}
 			else if(input.nextLine().toLowerCase().trim().equals("hard"))
 			{
-				difficulty = 3;
+				difficulty = 2;
 				break;
 			}
 			else
@@ -42,7 +43,12 @@ public class Runner {
 				System.out.println("Enter a a difficulty(easy, medium, hard");
 			}
 		}
-		Room[][] building = new Room[5*difficulty][5*difficulty];
+
+		int difficulty1 = (int) Math.round(difficulty);
+		Room[][] building = new Room[6*difficulty1][6*difficulty1];
+
+
+
 		int e = (int)(Math.random()*difficulty*2);
 
 		int x = (int)(Math.random()*building.length);

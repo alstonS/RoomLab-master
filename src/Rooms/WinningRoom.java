@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package Rooms;
 
 import Game.Runner;
@@ -22,7 +23,8 @@ public class WinningRoom extends Room
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		if(Inventory.length() >= 4) {
+		if(x.Inventory2[0] != null && x.Inventory2[1] != null && x.Inventory2[2] != null && x.Inventory2[3] != null  )
+		{
 			System.out.println("You found the winning room!");
 			Runner.gameOff();
 		}

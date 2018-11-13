@@ -1,5 +1,5 @@
 package Rooms;
-
+//Alston Shi Period 2/3
 import Items.Skull;
 import People.Person;
 
@@ -33,6 +33,16 @@ public class skullItem extends Room {
     public void leaveRoom(Person x)
     {
         occupant = null;
+    }
+    public String toString()
+    {
+        if(occupant ==null){
+            return ("SKT");
+
+        }
+        else
+            return("P");
+
     }
 
 }

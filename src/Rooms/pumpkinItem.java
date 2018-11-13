@@ -1,3 +1,4 @@
+//Alston Shi Period 2/3
 package Rooms;
 
 import Items.Pumpkin;
@@ -32,6 +33,17 @@ public class pumpkinItem extends Room{
     public void leaveRoom(Person x)
     {
         occupant = null;
+    }
+    @Override
+    public String toString()
+    {
+        if(occupant ==null){
+            return ("PT");
+
+        }
+        else
+            return("P");
+
     }
 
 }
