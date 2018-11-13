@@ -3,7 +3,6 @@ package Game;
 
 import People.Person;
 import Rooms.*;
-import Rooms.Board;
 
 
 import java.util.Scanner;
