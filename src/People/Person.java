@@ -12,7 +12,7 @@ public class Person {
 	String firstName;
 	int xLoc, yLoc, hp;
 	public Consumable[] Inventory = new Consumable[5];
-	public Items[] Inventory2 = new Items[3];
+	public Items[] Inventory2 = new Items[999];
 
 
 	public int getxLoc() {

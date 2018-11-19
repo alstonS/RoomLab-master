@@ -16,23 +16,24 @@ public class Runner {
 	public static void main(String[] args)
 	{
 		System.out.println("Welcome. You wake up in a unfamiliar place. You realize that you are in a haunted and spooky house. You must find a way out of here without getting killed by the ghost behind you!");
-		System.out.println("The goal is to find all 5 items and reach the final/winning door");
+		System.out.println("The goal is to find all 4 items and reach the final/winning door");
 		System.out.println("You may select the difficulty of this adventure. Type in 'easy/medium/hard' to select your desired difficulty.");
 		Scanner input = new Scanner(System.in);
+		String checkD = input.nextLine();
 		double difficulty;
 		while(true)
 		{
-			if(input.nextLine().toLowerCase().trim().equals("easy"))
+			if(checkD.toLowerCase().trim().equals("easy"))
 			{
 				difficulty = 1;
 				break;
 			}
-			else if(input.nextLine().toLowerCase().trim().equals("medium"))
+			else if(checkD.toLowerCase().trim().equals("medium"))
 			{
 				difficulty = 1.5;
 				break;
 			}
-			else if(input.nextLine().toLowerCase().trim().equals("hard"))
+			else if(checkD.toLowerCase().trim().equals("hard"))
 			{
 				difficulty = 2;
 				break;
@@ -164,7 +165,7 @@ public class Runner {
 
 
 	//Setup player 1 and the input scanner
-		String[] Inventory = new String[4];
+
 		Person player1 = new Person("FirstName", 0, 0,100);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
@@ -330,6 +331,14 @@ public class Runner {
 					System.out.println("You ate " + p.Inventory[5]+ " and gained 10 health!");
 					p.consume(5);
 				}
+
+			}
+			case "cord":
+			{
+				System.out.println("your x loc is " + p.getxLoc());
+				System.out.println("your y loc is " + p.getyLoc());
+
+
 
 			}
 			default:
